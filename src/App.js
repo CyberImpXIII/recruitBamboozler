@@ -3,7 +3,7 @@ import Axios from 'axios';
 import './App.css';
 
 function App() {
-  Axios.get('/api/save')
+  Axios.get('/api/save/test')
   .then((res)=>(console.log(res)))
   .catch((err)=>{console.log(err)});
   return (

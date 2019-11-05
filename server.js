@@ -11,7 +11,7 @@ app.get('/ping', function (req, res) {
  return res.send('pong');
 });
 
-app.get('/api/save', (req, res)=>{
+app.get('/api/save/test', (req, res)=>{
     fs.writeFile('.env', 'test="test"', err=>{
         if(err) throw err
         console.log('file has been saved')
