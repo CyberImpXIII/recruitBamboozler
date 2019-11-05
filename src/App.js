@@ -8,6 +8,9 @@ function App() {
   .catch((err)=>{console.log(err)});
   return (
     <div>
+    <input type='text' className='userNameInput' placeholder='User Name'/>
+    <input type='text' className='passwordInput' placeholder='password'/>
+    <button />
     </div>
   );
 }
