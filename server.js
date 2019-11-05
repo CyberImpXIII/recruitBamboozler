@@ -11,8 +11,8 @@ app.get('/ping', function (req, res) {
 });
 
 app.get('/api/save', (req, res)=>{
-    fs.write('.env', 'test="test"')
-
+    fs.write('.env', 'test="test"');
+    res.send('.env saved test');
 })
 
 app.listen(process.env.PORT || 8080, ()=>{
