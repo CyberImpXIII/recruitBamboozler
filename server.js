@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const env = require('dotenv').config();
 const app = express();
+const fs = require('fs');
 
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -11,7 +12,10 @@ app.get('/ping', function (req, res) {
 });
 
 app.get('/api/save', (req, res)=>{
-    fs.write('.env', 'test="test"');
+    fs.writeFile('.env', 'test="test"', err=>{
+        if(err) throw err
+        console.log('file has been saved')
+        });
     res.send('.env saved test');
 })
 
