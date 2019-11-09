@@ -12,9 +12,10 @@ function App() {
     <div>
     <input type='text' className='userNameInput' placeholder='User Name' onChange={(e)=>{
       setName(e.target.value);
-      console.log(name);
     }}/>
-    <input type='text' className='passwordInput' placeholder='password'/>
+    <input type='text' className='passwordInput' placeholder='password' onChange={(e)=>{
+      setPass(e.target.value);
+    }}/>
     <button />
     </div>
   );
