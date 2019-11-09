@@ -16,7 +16,16 @@ function App() {
     <input type='text' className='passwordInput' placeholder='password' onChange={(e)=>{
       setPass(e.target.value);
     }}/>
-    <button />
+    <button onClick={()=>{
+      Axios.get('/api/save/namepass', {
+        params: {
+          user : name,
+          pass : pass
+        }
+      })
+      .then(console.log)
+      .catch(console.log)
+    }}/>
     </div>
   );
 }
