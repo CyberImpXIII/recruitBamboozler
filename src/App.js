@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 import './App.css';
 
 function App() {
+  const [ name , setName ] = useState('');
+  const [ pass, setPass ] = useState('');
   Axios.get('/api/save/test')
   .then((res)=>(console.log(res)))
   .catch((err)=>{console.log(err)});
   return (
     <div>
-    <input type='text' className='userNameInput' placeholder='User Name'/>
+    <input type='text' className='userNameInput' placeholder='User Name' onChange={(e)=>{
+      setName(e.target.value);
+      console.log(name);
+    }}/>
     <input type='text' className='passwordInput' placeholder='password'/>
     <button />
     </div>
