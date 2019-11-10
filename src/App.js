@@ -17,7 +17,7 @@ function App() {
       setPass(e.target.value);
     }}/>
     <button onClick={()=>{
-      Axios.get('/api/save/namepass', {
+      Axios.get('/api/save/namepass',{
         params: {
           user : name,
           pass : pass
