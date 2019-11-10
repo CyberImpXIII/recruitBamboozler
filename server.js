@@ -19,6 +19,16 @@ app.get('/api/save/test', (req, res)=>{
     res.send('.env saved test');
 })
 
+app.get('/api/save/namepass', (req, res)=>{
+    console.log(req.query)
+    fs.writeFile('.env', `name="${req.query.user}" password="${req.query.pass}"`, err=>{
+        if(err) throw err
+        console.log('file has been saved')
+        });
+    res.send('.env saved test');
+})
+
+
 app.listen(process.env.PORT || 8080, ()=>{
     console.log(`Server is listening on port ${process.env.PORT || 8080}`)
 });
