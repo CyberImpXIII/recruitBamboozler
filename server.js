@@ -12,11 +12,13 @@ app.get('/ping', function (req, res) {
 });
 
 app.get('/api/save/test', (req, res)=>{
+    if(!fs.existsSync('.env')){
     fs.writeFile('.env', 'test="test"', err=>{
         if(err) throw err
         console.log('file has been saved')
         });
     res.send('.env saved test');
+    }
 })
 
 app.get('/api/save/namepass', (req, res)=>{
