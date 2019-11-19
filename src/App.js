@@ -5,9 +5,12 @@ import './App.css';
 function App() {
   const [ name , setName ] = useState('');
   const [ pass, setPass ] = useState('');
-  Axios.get('/api/save/test')
+
+  Axios.get('/ping')
   .then((res)=>(console.log(res)))
   .catch((err)=>{console.log(err)});
+  // Axios.get(, )
+
   return (
     <div>
     <input type='text' className='userNameInput' placeholder='User Name' onChange={(e)=>{
@@ -16,13 +19,18 @@ function App() {
     <input type='text' className='passwordInput' placeholder='password' onChange={(e)=>{
       setPass(e.target.value);
     }}/>
-    <button onClick={()=>{
+    <button value='Name/Pass Send' onClick={()=>{
       Axios.get('/api/save/namepass',{
         params: {
           user : name,
           pass : pass
         }
       })
+      .then(console.log)
+      .catch(console.log)
+    }}/>
+    <button value='gittest' onClick={()=>{
+      Axios.get('/api/git/test')
       .then(console.log)
       .catch(console.log)
     }}/>
