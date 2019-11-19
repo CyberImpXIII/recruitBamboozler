@@ -1,19 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
-const env = require('dotenv').config();
+require('dotenv').config();
 const app = express();
 const fs = require('fs');
+const Axios = require('axios');
 
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/ping', function (req, res) {
+    console.log(process.env.TOKEN)
  return res.send('pong');
 });
 
 app.get('/api/save/test', (req, res)=>{
     if(!fs.existsSync('.env')){
-    fs.writeFile('.env', 'test="test"', err=>{
+    fs.writeFile('.env', 'test=test', err=>{
         if(err) throw err
         console.log('file has been saved')
         });
@@ -21,9 +23,20 @@ app.get('/api/save/test', (req, res)=>{
     }
 })
 
+app.get('/api/git/test', (req, res)=>{
+    Axios.get('https://api.github.com' , {
+        headers: {
+            'user-agent': 'request',
+            Authorization: 'token ' + process.env.TOKEN //the token is a variable which holds the token
+          }
+    })
+    .then(console.log)
+    .catch(console.log)
+})
+
 app.get('/api/save/namepass', (req, res)=>{
     console.log(req.query)
-    fs.writeFile('.env', `name="${req.query.user}" password="${req.query.pass}"`, err=>{
+    fs.writeFile('.env', `NAME=${req.query.user} PASSWORD=${req.query.pass}`, err=>{
         if(err) throw err
         console.log('file has been saved')
         });
