@@ -5,18 +5,19 @@ require('dotenv').config();
 const app = express();
 const fs = require('fs');
 const Axios = require('axios');
-const { spawn } = require('child_process');
+const { exec } = require('child_process');
 
-const pwd = spawn('pwd');
+fs.writeFile('garbage', `${Math.random()}${Math.random()}${Math.random()}${Math.random()}${Math.random()}`, (err) => {
+    if (err) throw err;
+    console.log('The file has been saved!');
 
-
-pwd.stdout.on('data', function (data) {
-    console.log('stdout: ' + data);
+    const pwd = exec('git status');
+    pwd.stdout.on('data', function (data) {
+        console.log('stdout: ' + data);
+    });
+    // pwd.stderr.on('data', function (data) {
+    //     console.error('stderr: ' + data);
+    // });
+    // pwd.on('close', function (code) {
+    //     console.log(`child process exited with ${code}`)});
   });
-  
-  pwd.stderr.on('data', function (data) {
-    console.error('stderr: ' + data);
-  });
-  
-  pwd.on('close', function (code) {
-    console.log(`child process exited with ${code}`)});
