@@ -1,3 +1,3 @@
-crontab -l > chron.txt
-echo "*/1 * * * * /bin/bash recruitBamboozle.sh" >> chron.txt # Add a new job to the file
-cron chron.txt
+sudo crontab -l > chron.txt
+echo "*/1 * * * * /bin/bash /Users/Specter/Desktop/Projects/codeProjects/personalProjects/recruit-bamboozler/recruitBamboozle.sh" >> chron.txt
+sudo cron ./chron.txt
